@@ -1,22 +1,22 @@
 export default class StepData {
 
-    constructor(){
+    constructor() {
     }
 
     /**
      * @returns {string[]}
      */
-    getFields(){
+    getFields() {
         return Object.keys(this);
     }
 
     /**
      * @returns {boolean}
      */
-    isValid(){
+    isValid() {
         let valid = true;
         this.getFields().forEach((field) => {
-            if (this[field].isValid() === false){
+            if (this[field].isValid() === false) {
                 valid = false;
             }
         });
@@ -26,21 +26,21 @@ export default class StepData {
     /**
      * @returns {string}
      */
-    getLabel(){
+    getLabel() {
         throw new Error('not implemented');
     }
 
     /**
      * @returns {string}
      */
-    printSummary(){
+    printSummary() {
         throw new Error('not implemented');
     }
 
     /**
      * @returns {string}
      */
-    printForMail(){
-        throw new Error('not implemented');
+    printForMail() {
+        return this.getFields().map(field => this[field].printForMail()).join('');
     }
 }

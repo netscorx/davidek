@@ -110,6 +110,10 @@ export default class FormLayout extends Vue {
     }
 
     handleNextClick() {
+        if (this.currentStep === Steps.Summary) {
+            this.sendMail();
+        }
+
         const allFieldsValid = Object.values(this.stepData).every(field => field.isValid());
 
         if (allFieldsValid) {

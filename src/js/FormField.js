@@ -4,7 +4,7 @@ export class FormField {
      * @param {string}label
      * @param {Validator}validator
      */
-    constructor(label, validator){
+    constructor(label, validator) {
         this.label = label;
         this.value = '';
         this.validator = validator;
@@ -14,7 +14,7 @@ export class FormField {
      *
      * @returns {boolean}
      */
-    isValid(){
+    isValid() {
         return this.validator.isValid(this.value);
     }
 
@@ -22,17 +22,21 @@ export class FormField {
      *
      * @returns {string}
      */
-    printForSummary(){
+    printForSummary() {
         return this.label + ': ' + this.printValue();
 
+    }
+
+    printForMail() {
+        return `${this.label}: ${this.printValue()}\n`;
     }
 
     /**
      *
      * @returns {string}
      */
-    printValue(){
-        if (this.value.length === 0){
+    printValue() {
+        if (this.value.length === 0) {
             return '-';
         }
         return this.value;

@@ -4,7 +4,7 @@ import Steps from '@/js/Steps';
 
 export default class UserData {
 
-    constructor(){
+    constructor() {
         this.clientData = new ClientData();
         this.contactAndAddress = new ContactAndAddress();
     }
@@ -13,7 +13,7 @@ export default class UserData {
      *
      * @returns {string}
      */
-    getMailtoData(){
+    getMailtoData() {
         return `mailto:email@example.com?subject=${encodeURIComponent(
             'Dane z formularza',
         )}&body=${this._getSendData()}&`;
@@ -24,8 +24,8 @@ export default class UserData {
      * @param {Steps}step
      * @returns {boolean}
      */
-    isValidStepData(step){
-        switch (step){
+    isValidStepData(step) {
+        switch (step) {
             case Steps.ClientData:
                 return this.clientData.isValid();
             case Steps.ContactAndAddressData:
@@ -39,7 +39,7 @@ export default class UserData {
      *
      * @returns {string}
      */
-    printSummary(){
+    printSummary() {
         return `
         <p>${this.clientData.printSummary()}</p>
         <p>${this.contactAndAddress.printSummary()}</p>
@@ -51,7 +51,7 @@ export default class UserData {
      * @returns {string}
      * @private
      */
-    _printForMail(){
+    _printForMail() {
         return `
             ${this.clientData.printForMail()}\n
             ${this.contactAndAddress.printForMail()}\n
@@ -63,7 +63,7 @@ export default class UserData {
      * @returns {string}
      * @private
      */
-    _getSendData(){
-        return window.encodeURIComponent(this.printForMail());
+    _getSendData() {
+        return window.encodeURIComponent(this._printForMail());
     }
 }
